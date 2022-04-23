@@ -1,0 +1,10 @@
+{
+    "tabnine.disable_file_regex": [
+
+    ],
+    "tabnine.disable_line_regex": [
+
+    ],
+    "tabnine.experimentalAutoImports": false,
+    "tabnine.inlineHintColor": "fds"
+}
