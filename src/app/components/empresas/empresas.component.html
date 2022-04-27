@@ -68,12 +68,7 @@
               <option value="" disabled selected hidden>
                 Escoja una opción:
               </option>
-              <option value="Restaurante">Restaurante</option>
-              <option value="Distribuidora">Distribuidora</option>
-              <option value="Banco">Banco</option>
-              <option value="Super mercado">Supermercado</option>
-              <option value="Tecnología">Tecnología</option>
-              <option value="Bienes raíces">Bienes raíces</option>
+              <option *ngFor="let tipos of tipoEmpresas" value={{tipos.tipo}}>{{tipos.tipo}}</option>
             </select>
           </div>
           <div class="mb-3">
@@ -90,29 +85,7 @@
               <option value="" disabled selected hidden>
                 Escoja una opción:
               </option>
-              <option value="Amatitlán">Amatitlán</option>
-              <option value="Chinautla">Chinautla</option>
-              <option value="Chuarrancho">Chuarrancho</option>
-              <option value="Ciudad de Guatemala">Ciudad de Guatemala</option>
-              <option value="Fraijanes">Fraijanes</option>
-              <option value="Mixco">Mixco</option>
-              <option value="Palencia">Palencia</option>
-              <option value="San José del Golfo">San José del Golfo</option>
-              <option value="San José Pinula">San José Pinula</option>
-              <option value="San Juan Sacatepéquez">
-                San Juan Sacatepéquez
-              </option>
-              <option value="San Miguel Petapa">San Miguel Petapa</option>
-              <option value="San Pedro Ayampuc">San Pedro Ayampuc</option>
-              <option value="San Pedro Sacatepéquez">
-                San Pedro Sacatepéquez
-              </option>
-              <option value="San Raymundo">San Raymundo</option>
-              <option value="Santa Catarina Pinula">
-                Santa Catarina Pinula
-              </option>
-              <option value="Villa Canales">Villa Canales</option>
-              <option value="Villa Nueva">Villa Nueva</option>
+              <option *ngFor="let munis of municipios" value={{munis.nombre}}>{{munis.nombre}}</option>
             </select>
           </div>
           <div class="mb-3">
@@ -297,12 +270,7 @@
                   <option value="" disabled selected hidden>
                     Escoja una opción:
                   </option>
-                  <option value="Restaurante">Restaurante</option>
-                  <option value="Distribuidora">Distribuidora</option>
-                  <option value="Banco">Banco</option>
-                  <option value="Super mercado">Supermercado</option>
-                  <option value="Tecnología">Tecnología</option>
-                  <option value="Bienes raíces">Bienes raíces</option>
+                  <option *ngFor="let tipos of tipoEmpresas" value={{tipos.tipo}}>{{tipos.tipo}}</option>
                 </select>
               </div>
               <div class="mb-3">
@@ -319,31 +287,7 @@
                   <option value="" disabled selected hidden>
                     Escoja una opción:
                   </option>
-                  <option value="Amatitlán">Amatitlán</option>
-                  <option value="Chinautla">Chinautla</option>
-                  <option value="Chuarrancho">Chuarrancho</option>
-                  <option value="Ciudad de Guatemala">
-                    Ciudad de Guatemala
-                  </option>
-                  <option value="Fraijanes">Fraijanes</option>
-                  <option value="Mixco">Mixco</option>
-                  <option value="Palencia">Palencia</option>
-                  <option value="San José del Golfo">San José del Golfo</option>
-                  <option value="San José Pinula">San José Pinula</option>
-                  <option value="San Juan Sacatepéquez">
-                    San Juan Sacatepéquez
-                  </option>
-                  <option value="San Miguel Petapa">San Miguel Petapa</option>
-                  <option value="San Pedro Ayampuc">San Pedro Ayampuc</option>
-                  <option value="San Pedro Sacatepéquez">
-                    San Pedro Sacatepéquez
-                  </option>
-                  <option value="San Raymundo">San Raymundo</option>
-                  <option value="Santa Catarina Pinula">
-                    Santa Catarina Pinula
-                  </option>
-                  <option value="Villa Canales">Villa Canales</option>
-                  <option value="Villa Nueva">Villa Nueva</option>
+                  <option *ngFor="let munis of municipios" value={{munis.nombre}}>{{munis.nombre}}</option>
                 </select>
               </div>
               <div class="mb-3">

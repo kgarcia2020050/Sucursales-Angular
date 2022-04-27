@@ -17,6 +17,35 @@ export class EmpresasComponent implements OnInit {
 
   public token;
 
+  public tipoEmpresas = [
+    { tipo: 'Restaurante' },
+    { tipo: 'Distribuidora' },
+    { tipo: 'Banco' },
+    { tipo: 'Supermercado' },
+    { tipo: 'Tecnología' },
+    { tipo: 'Bienes raíces' },
+  ];
+
+  public municipios = [
+    { nombre: 'Amatitlán' },
+    { nombre: 'Chinautla' },
+    { nombre: 'Chuarrancho' },
+    { nombre: 'Ciudad de Guatemala' },
+    { nombre: 'Fraijanes' },
+    { nombre: 'Mixco' },
+    { nombre: 'Palencia' },
+    { nombre: 'San José del Golfo' },
+    { nombre: 'San José Pinula' },
+    { nombre: 'San Juan Sacatepéquez' },
+    { nombre: 'San Miguel Petapa' },
+    { nombre: 'San Pedro Ayampuc' },
+    { nombre: 'San Pedro Sacatepéquez' },
+    { nombre: 'San Raymundo' },
+    { nombre: 'Santa Catarina Pinula' },
+    { nombre: 'Villa Canales' },
+    { nombre: 'VillaNueva' },
+  ];
+
   constructor(
     private _empresasService: CRUDAdminService,
     private _loginService: LoginService

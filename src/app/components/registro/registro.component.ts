@@ -17,7 +17,39 @@ export class RegistroComponent implements OnInit {
     this.postModelo = new Entidad('', '', '', '', '', '', '', '');
   }
 
-  ngOnInit(): void {}
+  public tipoEmpresas = [
+    { tipo: 'Restaurante' },
+    { tipo: 'Distribuidora' },
+    { tipo: 'Banco' },
+    { tipo: 'Supermercado' },
+    { tipo: 'Tecnología' },
+    { tipo: 'Bienes raíces' },
+  ];
+
+  public municipios = [
+    { nombre: 'Amatitlán' },
+    { nombre: 'Chinautla' },
+    { nombre: 'Chuarrancho' },
+    { nombre: 'Ciudad de Guatemala' },
+    { nombre: 'Fraijanes' },
+    { nombre: 'Mixco' },
+    { nombre: 'Palencia' },
+    { nombre: 'San José del Golfo' },
+    { nombre: 'San José Pinula' },
+    { nombre: 'San Juan Sacatepéquez' },
+    { nombre: 'San Miguel Petapa' },
+    { nombre: 'San Pedro Ayampuc' },
+    { nombre: 'San Pedro Sacatepéquez' },
+    { nombre: 'San Raymundo' },
+    { nombre: 'Santa Catarina Pinula' },
+    { nombre: 'Villa Canales' },
+    { nombre: 'VillaNueva' },
+  ];
+
+
+  ngOnInit(): void {
+    localStorage.clear()
+  }
 
   postEmpresas() {
     this._loginService.registroEmpresa(this.postModelo).subscribe(
