@@ -8,6 +8,52 @@
     <title>Document</title>
   </head>
 
+  <!-- Modal -->
+  <div
+    class="modal fade"
+    id="exampleModal"
+    tabindex="-1"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Mis sucursales</h5>
+
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="modal-body">
+          <ol class="list-group list-group-numbered">
+            <li
+              *ngFor="let sucursales of getSucursales"
+              class="list-group-item d-flex justify-content-between align-items-start"
+            >
+              <div class="ms-2 me-auto">
+                <div class="fw-bold">{{sucursales.nombreSucursal}}</div>
+                {{sucursales.direccionSucursal}}
+              </div>
+            </li>
+          </ol>
+        </div>
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn-secondary"
+            data-bs-dismiss="modal"
+          >
+            Cerrar
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <body>
     <div
       class="offcanvas offcanvas-start"
@@ -68,7 +114,12 @@
               <option value="" disabled selected hidden>
                 Escoja una opción:
               </option>
-              <option *ngFor="let tipos of tipoEmpresas" value={{tipos.tipo}}>{{tipos.tipo}}</option>
+              <option
+                *ngFor="let tipos of tipoEmpresas"
+                value="{{ tipos.tipo }}"
+              >
+                {{ tipos.tipo }}
+              </option>
             </select>
           </div>
           <div class="mb-3">
@@ -85,7 +136,12 @@
               <option value="" disabled selected hidden>
                 Escoja una opción:
               </option>
-              <option *ngFor="let munis of municipios" value={{munis.nombre}}>{{munis.nombre}}</option>
+              <option
+                *ngFor="let munis of municipios"
+                value="{{ munis.nombre }}"
+              >
+                {{ munis.nombre }}
+              </option>
             </select>
           </div>
           <div class="mb-3">
@@ -125,7 +181,6 @@
       </div>
     </div>
 
-
     <div class="container">
       <button
         id="ap"
@@ -149,7 +204,7 @@
             </div>
             <div class="card-body">
               <p class="card-text">
-                Dirección: {{empresas.direccionEmpresa}} <br>
+                Dirección: {{ empresas.direccionEmpresa }} <br />
                 Municipio: {{ empresas.municipioEmpresa }} <br />
                 Tipo: {{ empresas.tipoEmpresa }}
               </p>
@@ -159,7 +214,7 @@
                   role="group"
                   aria-label="Basic mixed styles example"
                 >
-                  <button
+                  <!--   <button
                     id="btnDelete"
                     class="noselect"
                     (click)="deleteEmpresas(empresas._id)"
@@ -201,7 +256,40 @@
                         ></path>
                       </svg>
                     </span>
-                  </button>
+                  </button> -->
+
+                  <div
+                    class="btn-group"
+                    role="group"
+                    aria-label="Basic mixed styles example"
+                  >
+                    <button
+                      type="button"
+                      class="btn btn-danger"
+                      (click)="deleteEmpresas(empresas._id)"
+                    >
+                      Eliminar
+                    </button>
+                    <button
+                      type="button"
+                      class="btn btn-warning"
+                      data-bs-toggle="offcanvas"
+                      data-bs-target="#offcanvasExample"
+                      aria-controls="offcanvasExample"
+                      (click)="getEmpresaId(empresas._id)"
+                    >
+                      Editar
+                    </button>
+                    <button
+                      type="button"
+                      class="btn btn-success"
+                      data-bs-toggle="modal"
+                      data-bs-target="#exampleModal"
+                      (click)="getSucursalesEmpresa(empresas._id)"
+                    >
+                      Ver sucursales
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
@@ -270,7 +358,12 @@
                   <option value="" disabled selected hidden>
                     Escoja una opción:
                   </option>
-                  <option *ngFor="let tipos of tipoEmpresas" value={{tipos.tipo}}>{{tipos.tipo}}</option>
+                  <option
+                    *ngFor="let tipos of tipoEmpresas"
+                    value="{{ tipos.tipo }}"
+                  >
+                    {{ tipos.tipo }}
+                  </option>
                 </select>
               </div>
               <div class="mb-3">
@@ -287,7 +380,12 @@
                   <option value="" disabled selected hidden>
                     Escoja una opción:
                   </option>
-                  <option *ngFor="let munis of municipios" value={{munis.nombre}}>{{munis.nombre}}</option>
+                  <option
+                    *ngFor="let munis of municipios"
+                    value="{{ munis.nombre }}"
+                  >
+                    {{ munis.nombre }}
+                  </option>
                 </select>
               </div>
               <div class="mb-3">

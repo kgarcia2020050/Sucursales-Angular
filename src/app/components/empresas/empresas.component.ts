@@ -3,6 +3,7 @@ import { Entidad } from 'src/app/models/entidad.model';
 import { CRUDAdminService } from 'src/app/services/crudadmin.service';
 import { LoginService } from 'src/app/services/login.service';
 import Swal from 'sweetalert2';
+import { Sucursales } from 'src/app/models/sucursales.model';
 
 @Component({
   selector: 'app-empresas',
@@ -14,6 +15,8 @@ export class EmpresasComponent implements OnInit {
   public getModelo: Entidad;
   public postModelo: Entidad;
   public getIdModelo: Entidad;
+
+  public getSucursales: Sucursales;
 
   public token;
 
@@ -109,6 +112,22 @@ export class EmpresasComponent implements OnInit {
       },
       (error) => {
         console.log(<any>error);
+      }
+    );
+  }
+
+  getSucursalesEmpresa(idEmpresa) {
+    this._empresasService.sucursalesEmpresa(idEmpresa, this.token).subscribe(
+      (response) => {
+        console.log(response)
+        this.getSucursales = response.Mis_sucursales;
+      },
+      (error) => {
+        Swal.fire({
+          position: 'top-end',
+          icon: 'error',
+          title: error.error.Error,
+        });
       }
     );
   }

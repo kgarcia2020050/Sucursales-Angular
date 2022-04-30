@@ -4,6 +4,7 @@ import { Productos } from 'src/app/models/productos.model';
 import { ProductosService } from 'src/app/services/productos.service';
 import { LoginService } from 'src/app/services/login.service';
 
+
 @Component({
   selector: 'app-productos',
   templateUrl: './productos.component.html',
@@ -14,6 +15,7 @@ export class ProductosComponent implements OnInit {
   public getModelo: Productos;
   public postModelo: Productos;
   public getIdModelo: Productos;
+
 
   public identidad;
   public token;
@@ -82,7 +84,9 @@ export class ProductosComponent implements OnInit {
         console.log(<any>error);
       }
     );
-  }
+  }z
+
+
 
   putProductos() {
     this._productosService

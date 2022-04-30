@@ -50,6 +50,13 @@ export class CRUDAdminService {
     );
   }
 
+  sucursalesEmpresa(id: String, token): Observable<any> {
+    let headersToken = this.headersVariable.set('Authorization', token);
+    return this._http.get(this.url + '/sucursalesEmpresa/' + id, {
+      headers: headersToken,
+    });
+  }
+
   eliminarEmpresa(id: String, token): Observable<any> {
     let headersToken = this.headersVariable.set('Authorization', token);
 

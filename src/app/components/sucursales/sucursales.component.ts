@@ -15,15 +15,16 @@ export class SucursalesComponent implements OnInit {
   public getModelo: Sucursales;
   public postModelo: Sucursales;
   public getIdModelo: Sucursales;
-
   public token;
+
+
 
   constructor(
     private _sucursalesService: SucursalesService,
     private _loginService: LoginService
   ) {
     this.postModelo = new Sucursales('', '', '', '');
-    this.getIdModelo=new Sucursales('', '', '','');
+    this.getIdModelo = new Sucursales('', '', '', '');
     this.token = this._loginService.obtenerToken();
     this.identidad = JSON.parse(localStorage.getItem('identidad'));
   }
@@ -72,16 +73,19 @@ export class SucursalesComponent implements OnInit {
   }
 
   putSucursales() {
-    this._sucursalesService.editarSucursal(this.getIdModelo, this.token).subscribe(
-      (response) => {
-        console.log(response)
-        this.getSucursales();
-      },
-      (error) => {
-        console.log(<any>error);
-      }
-    );
+    this._sucursalesService
+      .editarSucursal(this.getIdModelo, this.token)
+      .subscribe(
+        (response) => {
+          console.log(response);
+          this.getSucursales();
+        },
+        (error) => {
+          console.log(<any>error);
+        }
+      );
   }
+
 
   deleteSucursales(idSucursal) {
     this._sucursalesService.eliminarSucursal(idSucursal, this.token).subscribe(

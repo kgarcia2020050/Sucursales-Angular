@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { Sucursales } from '../models/sucursales.model';
 import { LoginService } from '../services/login.service';
 
+
 @Injectable({
   providedIn: 'root',
 })

@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Entidad } from 'src/app/models/entidad.model';
 import { LoginService } from 'src/app/services/login.service';
 import Swal from 'sweetalert2';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-login',

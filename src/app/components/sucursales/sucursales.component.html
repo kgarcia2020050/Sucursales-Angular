@@ -9,6 +9,7 @@
   </head>
 
   <body>
+
     <div
       class="offcanvas offcanvas-start"
       tabindex="-1"
@@ -37,7 +38,8 @@
               class="form-control"
               id="inputNombre"
               name="nombreSucursal"
-              #nombreSucursal="ngModel" [(ngModel)]="getIdModelo.nombreSucursal"
+              #nombreSucursal="ngModel"
+              [(ngModel)]="getIdModelo.nombreSucursal"
             />
           </div>
           <div class="mb-3">
@@ -49,15 +51,15 @@
               class="form-control"
               id="inputDireccionS"
               name="direccionSucursal"
-              #direccionSucursal="ngModel" [(ngModel)]="getIdModelo.direccionSucursal"
+              #direccionSucursal="ngModel"
+              [(ngModel)]="getIdModelo.direccionSucursal"
             />
           </div>
-
 
           <button
             class="btn btn-success"
             data-bs-dismiss="offcanvas"
-            (click)=" putSucursales()"
+            (click)="putSucursales()"
           >
             Guardar informacion
           </button>
@@ -96,7 +98,32 @@
                   role="group"
                   aria-label="Basic mixed styles example"
                 >
-                  <button id="btnDelete" class="noselect" (click)="deleteSucursales(sucursales._id)">
+                  <button
+                    type="button"
+                    class="btn btn-danger"
+                    (click)="deleteSucursales(sucursales._id)"
+                  >
+                    Eliminar
+                  </button>
+                  <button
+                    type="button"
+                    class="btn btn-warning"
+                    data-bs-toggle="offcanvas"
+                    data-bs-target="#offcanvasExample"
+                    aria-controls="offcanvasExample"
+                    (click)="getSucursalId(sucursales._id)"
+                  >
+                    Editar
+                  </button>
+                  <button
+                    type="button"
+                    class="btn btn-success"
+
+                  >
+                    Ver mis productos
+                  </button>
+
+                  <!-- <button id="btnDelete" class="noselect" (click)="deleteSucursales(sucursales._id)">
                     <span class="text">Eliminar</span>
                     <span class="icon">
                       <svg
@@ -129,7 +156,7 @@
                         ></path>
                       </svg>
                     </span>
-                  </button>
+                  </button> -->
                 </div>
               </div>
             </div>

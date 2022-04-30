@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { LoginService } from '../services/login.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
+
 @Injectable({
   providedIn: 'root',
 })
@@ -56,6 +57,7 @@ export class ProductosService {
       { headers: headersToken }
     );
   }
+
 
   eliminarProductos(id: String, token): Observable<any> {
     let headersToken = this.headersVariable.set('Authorization', token);
