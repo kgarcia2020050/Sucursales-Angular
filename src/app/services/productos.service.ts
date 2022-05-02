@@ -3,7 +3,7 @@ import { Productos } from '../models/productos.model';
 import { Observable } from 'rxjs';
 import { LoginService } from '../services/login.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-
+import { ProductosSucursales } from '../models/productos-sucursales.model';
 
 @Injectable({
   providedIn: 'root',
@@ -40,6 +40,14 @@ export class ProductosService {
     });
   }
 
+  enviarProductos(modelo: ProductosSucursales, token): Observable<any> {
+    let headersToken = this.headersVariable.set('Authorization', token);
+    let parametros = JSON.stringify(modelo);
+    return this._http.post(this.url + '/enviarProductos', parametros, {
+      headers: headersToken,
+    });
+  }
+
   obtenerProductoId(id: String, token): Observable<any> {
     let headersToken = this.headersVariable.set('Authorization', token);
     return this._http.get(this.url + '/productoId/' + id, {
@@ -57,7 +65,6 @@ export class ProductosService {
       { headers: headersToken }
     );
   }
-
 
   eliminarProductos(id: String, token): Observable<any> {
     let headersToken = this.headersVariable.set('Authorization', token);

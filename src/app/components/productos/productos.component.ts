@@ -4,6 +4,7 @@ import { Productos } from 'src/app/models/productos.model';
 import { ProductosService } from 'src/app/services/productos.service';
 import { LoginService } from 'src/app/services/login.service';
 
+import { ProductosSucursales } from 'src/app/models/productos-sucursales.model';
 
 @Component({
   selector: 'app-productos',
@@ -16,6 +17,7 @@ export class ProductosComponent implements OnInit {
   public postModelo: Productos;
   public getIdModelo: Productos;
 
+  public modeloPost: ProductosSucursales;
 
   public identidad;
   public token;
@@ -25,6 +27,7 @@ export class ProductosComponent implements OnInit {
     private _productosService: ProductosService
   ) {
     this.postModelo = new Productos('', '', '', 0, '');
+    this.modeloPost = new ProductosSucursales('', '', 0, 0, '');
     this.getIdModelo = new Productos('', '', '', 0, '');
     this.token = this._loginService.obtenerToken();
     this.identidad = JSON.parse(localStorage.getItem('identidad'));
@@ -84,9 +87,25 @@ export class ProductosComponent implements OnInit {
         console.log(<any>error);
       }
     );
-  }z
+  }
 
-
+  enviarProductos() {
+    this._productosService
+      .enviarProductos(this.modeloPost, this.token)
+      .subscribe(
+        (response) => {
+          console.log(response);
+        },
+        (error) => {
+          console.log(<any>error);
+          Swal.fire({
+            position: 'top-end',
+            icon: 'error',
+            title: error.error.Error,
+          });
+        }
+      );
+  }
 
   putProductos() {
     this._productosService
