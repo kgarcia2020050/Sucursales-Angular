@@ -1,22 +1,10 @@
-#btn {
-  position: absolute;
-  margin-top: 30px;
-  margin-left: -20px;
-  background-color:  #f4d03f;
-  color: black;
+body {
+  background: #43C6AC;
+  background: -webkit-linear-gradient(to right, #191654, #43C6AC);
+  background: linear-gradient(to right, #191654, #43C6AC);
+  height: 100vh;
 }
 
-body{
-  content: "";
-  display: flex;
-  background: #040404 url("../inicio/MicrosoftTeams-image.png") top right no-repeat;
-  background-size: cover;
-  left: 0;
-  right: 0;
-  top: 0;
-  height: 100vh;
-  z-index: -1;
-}
 #ola {
   display: flex;
   justify-content: center;
@@ -184,3 +172,78 @@ body{
   transform: scale(0.8);
  }
 
+
+  /* boton View */
+#btnView {
+  width: 150px;
+  height: 50px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  background: #17a589;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 1px 1px 3px rgba(0,0,0,0.15);
+  background:  #1abc9c;
+ }
+ #btnView .icon svg {
+  width: 10em;
+  transition: transform 0.3s;
+  color: white;
+ }
+
+ #btnView, #btnView span {
+  transition: 200ms;
+ }
+
+ #btnView .text {
+  transform: translateX(1px);
+  color: white;
+  font-weight: bold;
+ }
+
+ #btnView .icon {
+  position: absolute;
+  border-left: 1px solid #17a589;
+  transform: translateX(110px);
+  height: 40px;
+  width: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+ }
+
+ #btnView svg {
+  width: 15px;
+  fill: #eee;
+ }
+
+ #btnView:hover {
+  background: #17a589;
+ }
+
+ #btnView:hover .text {
+  color: transparent;
+ }
+
+ #btnView:hover .icon {
+  width: 150px;
+  border-left: none;
+  transform: translateX(0);
+ }
+
+ #btnView:focus {
+  outline: none;
+ }
+
+ #btnView:active .icon svg {
+  transform: scale(0.8);
+ }
+
+#eye {
+  color: white;
+}
+
+#edit {
+  color: white;
+}

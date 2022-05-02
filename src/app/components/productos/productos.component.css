@@ -7,15 +7,10 @@
 }
 
 body{
-  content: "";
-  display: flex;
-  background: #040404 url("../inicio/MicrosoftTeams-image.png") top right no-repeat;
-  background-size: cover;
-  left: 0;
-  right: 0;
-  top: 0;
+  background: #43C6AC;
+  background: -webkit-linear-gradient(to right, #191654, #43C6AC);
+  background: linear-gradient(to right, #191654, #43C6AC);
   height: 100vh;
-  z-index: -1;
 }
 #ola {
   display: flex;
@@ -184,3 +179,6 @@ body{
   transform: scale(0.8);
  }
 
+ #edit {
+  color: white;
+}
