@@ -53,7 +53,6 @@ export class SucursalesComponent implements OnInit {
         (error) => {
           console.log(<any>error);
           Swal.fire({
-            position: 'top-end',
             icon: 'error',
             title: error.error.Error,
           });
@@ -82,6 +81,10 @@ export class SucursalesComponent implements OnInit {
         },
         (error) => {
           console.log(<any>error);
+          Swal.fire({
+            icon: 'error',
+            title: error.error.Error,
+          });
         }
       );
   }

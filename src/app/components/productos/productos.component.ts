@@ -6,17 +6,21 @@ import { LoginService } from 'src/app/services/login.service';
 
 import { ProductosSucursales } from 'src/app/models/productos-sucursales.model';
 
+import { SucursalesService } from 'src/app/services/sucursales.service';
+import { Sucursales } from 'src/app/models/sucursales.model';
+
 @Component({
   selector: 'app-productos',
   templateUrl: './productos.component.html',
   styleUrls: ['./productos.component.css'],
-  providers: [ProductosService, LoginService],
+  providers: [ProductosService, LoginService, SucursalesService],
 })
 export class ProductosComponent implements OnInit {
   public getModelo: Productos;
   public postModelo: Productos;
   public getIdModelo: Productos;
 
+  public obtenerSucursales: Sucursales;
   public modeloPost: ProductosSucursales;
 
   public identidad;
@@ -24,7 +28,8 @@ export class ProductosComponent implements OnInit {
 
   constructor(
     private _loginService: LoginService,
-    private _productosService: ProductosService
+    private _productosService: ProductosService,
+    private _sucursalesService: SucursalesService
   ) {
     this.postModelo = new Productos('', '', '', 0, '');
     this.modeloPost = new ProductosSucursales('', '', 0, 0, '');
@@ -35,6 +40,18 @@ export class ProductosComponent implements OnInit {
 
   ngOnInit(): void {
     this.getProductos();
+  }
+
+  getSucursales() {
+    this._sucursalesService.obtenerSucursales(this.token).subscribe(
+      (response) => {
+        this.obtenerSucursales = response.Mis_sucursales;
+        console.log(response);
+      },
+      (error) => {
+        console.log(<any>error);
+      }
+    );
   }
 
   getProductos() {
@@ -94,12 +111,17 @@ export class ProductosComponent implements OnInit {
       .enviarProductos(this.modeloPost, this.token)
       .subscribe(
         (response) => {
+          Swal.fire({
+            icon: 'success',
+            title: response.Producto_enviado,
+          });
+          this.getProductos();
           console.log(response);
         },
         (error) => {
           console.log(<any>error);
+
           Swal.fire({
-            position: 'top-end',
             icon: 'error',
             title: error.error.Error,
           });
@@ -117,6 +139,10 @@ export class ProductosComponent implements OnInit {
         },
         (error) => {
           console.log(<any>error);
+          Swal.fire({
+            icon: 'error',
+            title: error.error.Error,
+          });
         }
       );
   }

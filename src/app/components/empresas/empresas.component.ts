@@ -96,7 +96,6 @@ export class EmpresasComponent implements OnInit {
       (error) => {
         console.log(<any>error);
         Swal.fire({
-          position: 'top-end',
           icon: 'error',
           title: error.error.Error,
         });
@@ -119,12 +118,11 @@ export class EmpresasComponent implements OnInit {
   getSucursalesEmpresa(idEmpresa) {
     this._empresasService.sucursalesEmpresa(idEmpresa, this.token).subscribe(
       (response) => {
-        console.log(response)
+        console.log(response);
         this.getSucursales = response.Mis_sucursales;
       },
       (error) => {
         Swal.fire({
-          position: 'top-end',
           icon: 'error',
           title: error.error.Error,
         });

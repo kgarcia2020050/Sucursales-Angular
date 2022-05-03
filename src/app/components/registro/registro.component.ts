@@ -60,7 +60,6 @@ export class RegistroComponent implements OnInit {
       (error) => {
         console.log(<any>error);
         Swal.fire({
-          position: 'top-end',
           icon: 'error',
           title: error.error.Error,
         });
