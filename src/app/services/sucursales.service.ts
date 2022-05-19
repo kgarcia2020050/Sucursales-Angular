@@ -4,7 +4,6 @@ import { Observable } from 'rxjs';
 import { Sucursales } from '../models/sucursales.model';
 import { LoginService } from '../services/login.service';
 
-
 @Injectable({
   providedIn: 'root',
 })
@@ -25,6 +24,14 @@ export class SucursalesService {
     var ID = this.identidad._id;
     let headersToken = this.headersVariable.set('Authorization', token);
     return this._http.get(this.url + '/verSucursales/' + ID, {
+      headers: headersToken,
+    });
+  }
+
+  obtenerProductos(nombre: String, token): Observable<any> {
+    let headersToken = this.headersVariable.set('Authorization', token);
+
+    return this._http.get(this.url + '/misProductos/' + nombre, {
       headers: headersToken,
     });
   }

@@ -80,7 +80,7 @@
                     <i id="edit" class="fa-solid fa-pen-to-square"></i>
                   </span>
                 </button>
-                <button id="btnView" class="noselect" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                <button (click)="getProducts(sucursales.nombreSucursal)" id="btnView" class="noselect" data-bs-toggle="modal" data-bs-target="#exampleModal"
                   aria-controls="offcanvasExample">
                   <span class="text">Mis productos</span>
                   <span class="icon">
@@ -103,7 +103,7 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <form>
+          <form #agregarSucursal="ngForm">
             <div class="mb-3">
               <label for="inputNombre" class="form-label">Nombre</label>
               <input type="text" class="form-control" id="inputNombre" name="nombreSucursal" #nombreSucursal="ngModel"
@@ -120,7 +120,7 @@
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
             Cancelar
           </button>
-          <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="postSucursales()">
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="postSucursales(agregarSucursal)">
             Agregar
           </button>
         </div>

@@ -26,6 +26,8 @@ export class ProductosComponent implements OnInit {
   public identidad;
   public token;
 
+  public search;
+
   constructor(
     private _loginService: LoginService,
     private _productosService: ProductosService,
@@ -46,7 +48,6 @@ export class ProductosComponent implements OnInit {
     this._sucursalesService.obtenerSucursales(this.token).subscribe(
       (response) => {
         this.obtenerSucursales = response.Mis_sucursales;
-        console.log(response);
       },
       (error) => {
         console.log(<any>error);
@@ -65,12 +66,13 @@ export class ProductosComponent implements OnInit {
     );
   }
 
-  postProductos() {
+  postProductos(agregarProductos) {
     this._productosService
       .agregarProductos(this.postModelo, this.token)
       .subscribe(
         (response) => {
           this.getProductos();
+          agregarProductos.reset()
         },
         (error) => {
           console.log(<any>error);

@@ -12,6 +12,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { RegistroComponent } from './components/registro/registro.component';
 import { SucursalesComponent } from './components/sucursales/sucursales.component';
 import { ProductosComponent } from './components/productos/productos.component';
+import { BusquedaPipe } from './pipes/busqueda.pipe';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { ProductosComponent } from './components/productos/productos.component';
     RegistroComponent,
     SucursalesComponent,
     ProductosComponent,
+    BusquedaPipe,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
   providers: [],

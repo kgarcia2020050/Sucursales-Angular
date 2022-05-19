@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Sucursales } from 'src/app/models/sucursales.model';
 import { SucursalesService } from 'src/app/services/sucursales.service';
 import { LoginService } from 'src/app/services/login.service';
+import { ProductosSucursales } from 'src/app/models/productos-sucursales.model';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -17,7 +18,7 @@ export class SucursalesComponent implements OnInit {
   public getIdModelo: Sucursales;
   public token;
 
-
+  public getProductos: ProductosSucursales;
 
   constructor(
     private _sucursalesService: SucursalesService,
@@ -32,6 +33,17 @@ export class SucursalesComponent implements OnInit {
     this.getSucursales();
   }
 
+  getProducts(nombre) {
+    this._sucursalesService.obtenerProductos(nombre, this.token).subscribe(
+      (response) => {
+        console.log(response.Mis_productos)
+      },
+      (error) => {
+        console.log(<any>error);
+      }
+    );
+  }
+
   getSucursales() {
     this._sucursalesService.obtenerSucursales(this.token).subscribe(
       (response) => {
@@ -43,12 +55,13 @@ export class SucursalesComponent implements OnInit {
     );
   }
 
-  postSucursales() {
+  postSucursales(agregarSucursal) {
     this._sucursalesService
       .agregarSucursal(this.postModelo, this.token)
       .subscribe(
         (response) => {
           this.getSucursales();
+          agregarSucursal.reset();
         },
         (error) => {
           console.log(<any>error);
@@ -88,7 +101,6 @@ export class SucursalesComponent implements OnInit {
         }
       );
   }
-
 
   deleteSucursales(idSucursal) {
     this._sucursalesService.eliminarSucursal(idSucursal, this.token).subscribe(

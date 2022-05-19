@@ -17,6 +17,7 @@
   </head>
 
   <body>
+
     <div
       class="offcanvas offcanvas-start"
       tabindex="-1"
@@ -112,7 +113,7 @@
       </button>
 
       <div class="row">
-        <div class="col-12 col-md-6" *ngFor="let productos of getModelo">
+        <div class="col-12 col-md-6" *ngFor="let productos of getModelo | busqueda:search">
           <div class="card text-center mb-3">
             <div class="card-header">
               {{ productos.nombreProducto }}
@@ -187,7 +188,7 @@
             ></button>
           </div>
           <div class="modal-body">
-            <form>
+            <form #agregarProducto="ngForm">
               <div class="mb-3">
                 <label for="inputNombre" class="form-label">Nombre</label>
                 <input
@@ -236,7 +237,7 @@
               type="button"
               class="btn btn-primary"
               data-bs-dismiss="modal"
-              (click)="postProductos()"
+              (click)="postProductos(agregarProducto)"
             >
               Agregar
             </button>

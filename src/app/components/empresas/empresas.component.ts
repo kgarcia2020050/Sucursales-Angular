@@ -86,10 +86,11 @@ export class EmpresasComponent implements OnInit {
     );
   }
 
-  postEmpresas() {
+  postEmpresas(agregarEmpresa) {
     this._empresasService.agregarEmpresa(this.postModelo, this.token).subscribe(
       (response) => {
         this.getEmpresas();
+        agregarEmpresa.reset()
 
         console.log(response);
       },
