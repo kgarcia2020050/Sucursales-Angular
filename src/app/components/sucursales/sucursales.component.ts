@@ -36,6 +36,7 @@ export class SucursalesComponent implements OnInit {
   getProducts(nombre) {
     this._sucursalesService.obtenerProductos(nombre, this.token).subscribe(
       (response) => {
+        this.getProductos=response.Mis_productos;
         console.log(response.Mis_productos)
       },
       (error) => {
@@ -113,4 +114,23 @@ export class SucursalesComponent implements OnInit {
       }
     );
   }
+
+  ventasProductos(nombre){
+    this._sucursalesService.ventas(nombre, this.token).subscribe(
+      (response) => {
+        Swal.fire({
+          icon: 'success',
+          title: response.stockActualizado,
+        });
+      },(error) => {
+        console.log(<any>error);
+        Swal.fire({
+          icon: 'error',
+          title: error.error.Error,
+        });
+      }
+    )
+  }
+
+
 }

@@ -71,4 +71,11 @@ export class SucursalesService {
       headers: headersToken,
     });
   }
+
+  ventas(nombre: String,token): Observable<any> {
+    let headersToken = this.headersVariable.set('Authorization', token);
+    return this._http.put(this.url + '/ventas/' + nombre, {
+      headers: headersToken,
+    });
+  }
 }
